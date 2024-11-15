@@ -19,10 +19,10 @@ const loadState = () => {
       const serializedState = localStorage.getItem('appState');
       return serializedState
         ? JSON.parse(serializedState)
-        : { hotels: HotelsData, categories: CATEGORIES };
+        : {};
     } catch (err) {
       console.error('Could not load state', err);
-      return { hotels: HotelsData, categories: CATEGORIES };
+      return {};
     }
   }
 };
@@ -36,15 +36,23 @@ const saveState = (state: { hotels: Hotel[]; categories: Category[] }) => {
   }
 };
 
-const initialState = loadState();
+// Default state for fallback
+const defaultState: StateType = {
+  hotels: HotelsData,
+  categories: CATEGORIES,
+  searchTerm: '',
+  categoryFilter: '',
+};
+
+// Merge loaded state with defaults
+const initialState: StateType = {
+  ...defaultState,
+  ...loadState(),
+};
 
 export const HotelSlice = createSlice({
   name: 'hotel',
-  initialState: {
-    ...loadState(),
-    searchTerm: '',
-    categoryFilter: '',
-  },
+  initialState,
   reducers: {
     addHotel: (
       state: StateType,

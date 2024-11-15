@@ -45,7 +45,7 @@ export default function FilterComboBox({ onChange, value }: Props) {
     : null;
 
   const [selectedOption, setSelectedOption] = React.useState<Category | null>(
-    defaultValue
+    defaultValue!
   );
 
   useEffect(() => {
