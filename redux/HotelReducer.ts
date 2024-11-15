@@ -78,7 +78,6 @@ export const HotelSlice = createSlice({
 
       // if index found, update
       if (hotelIndex !== -1) {
-        console.log('hotelIndex: ', hotelIndex);
         state.hotels[hotelIndex] = {
           ...state.hotels[hotelIndex],
           ...updatedHotel,
@@ -91,7 +90,6 @@ export const HotelSlice = createSlice({
     },
 
     deleteHotel: (state: StateType, action: PayloadAction<string>) => {
-      console.log('deleteHotel');
       state.hotels = state.hotels.filter(
         (hotel: Hotel) => hotel.id !== action.payload
       );
@@ -130,11 +128,8 @@ export const HotelSlice = createSlice({
         (category: Category) => category.id === action.payload.id
       );
 
-      console.log('categoryIndex: ', categoryIndex);
-
       // if index found, update
       if (categoryIndex !== -1) {
-        console.log('categoryIndex: ', categoryIndex);
         state.categories[categoryIndex] = {
           ...state.categories[categoryIndex],
           value: action.payload.value,
@@ -149,7 +144,6 @@ export const HotelSlice = createSlice({
     },
 
     deleteCategory: (state: StateType, action: PayloadAction<string>) => {
-      console.log('deleteCategory');
       state.categories = state.categories.filter(
         (category: Category) => category.id !== action.payload
       );
@@ -161,7 +155,6 @@ export const HotelSlice = createSlice({
     },
 
     setCategoryFilter: (state: StateType, action: PayloadAction<string>) => {
-      console.log(action.payload, 'payload');
       state.categoryFilter = action.payload;
     },
 

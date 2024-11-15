@@ -21,8 +21,6 @@ export default function Hotels() {
   const categoryFilter: string = useSelector(
     (state: RootState) => state.hotel.categoryFilter
   );
-
-  console.log('categoryFilter: ', categoryFilter);
   
   // Filter hotels based on searchTerm and categoryFilter
   const filteredHotels = hotels.filter((hotel: Hotel) => {
@@ -36,8 +34,6 @@ export default function Hotels() {
 
     return matchesSearch && matchesCategory;
   });
-
-  console.log('filteredHotels', filteredHotels);
 
   return (
     <div className='my-12 w-full rounded pt-8 gap-x-8 gap-y-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>

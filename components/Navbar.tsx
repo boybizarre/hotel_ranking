@@ -3,7 +3,7 @@ import ShowCategoriesDialog from '@/components/ShowCategoriesDialog';
 
 function Navbar() {
   return (
-    <nav className='flex flex-col md:flex-row md:justify-between bg-background items-center h-24 my-12 rounded-3xl px-12 py-6  font-bold'>
+    <nav className='flex bg-background items-center h-24 my-12 rounded-3xl px-12 py-6 font-bold flex-row justify-between'>
       <p className='text-5xl'>Hotels Ranking</p>
       <div className=''>
         <ShowCategoriesDialog

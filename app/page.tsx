@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-      <div className='grid grid-cols-1 gap-6 h-24 px-12 py-6 bg-background rounded-3xl md:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-6 min-h-24 px-12 py-6 bg-background rounded-3xl md:grid-cols-3'>
         {/* search */}
         <Search />
 
@@ -19,7 +19,7 @@ export default function Home() {
         <FilterComboBox />
 
         {/* buttons */}
-        <div className='flex items-center gap-6 my-auto h-12 w-full'>
+        <div className='flex items-center gap-6 mb-3 sm:my-auto h-12 w-full'>
           <AddHotelDialog
             trigger={
               <Button

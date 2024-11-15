@@ -19,7 +19,6 @@ function Search() {
   
   // dispatch search action when the debounced value changes
   useEffect(() => {
-    console.log('debounced value: ', debouncedValue);
     dispatch(setSearchTerm(debouncedValue));
   }, [debouncedValue, dispatch]);
 

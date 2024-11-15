@@ -153,7 +153,7 @@ export default function AddCategoryDialog({ trigger, category }: Props) {
             </Button>
           </DialogClose>
           <Button
-            className='mr-6 text-xl'
+            className='text-xl mb-6 sm:mb-0 sm:mr-12'
             onClick={form.handleSubmit(onSubmit)}
             disabled={isLoading}
           >
