@@ -1,28 +1,24 @@
 'use client';
 
 // components
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 import AddHotelDialog from '@/components/AddHotelDialog';
 import DeleteHotelDialog from '@/components/DeleteHotelDialog';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { StateType } from '@/redux/HotelReducer';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
 import { Hotel } from '@/lib/data/hotel_data';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-// data
-import { HotelsData } from '@/lib/data/hotel_data';
-
 export default function Hotels() {
-  const hotels = useSelector((state: RootState) => state.hotel.hotels);
+  const hotels: Hotel[] = useSelector((state: RootState) => state.hotel.hotels);
 
-  const searchTerm = useSelector((state: RootState) => state.hotel.searchTerm);
+  const searchTerm: string = useSelector((state: RootState) => state.hotel.searchTerm);
 
-  const categoryFilter = useSelector(
+  const categoryFilter: string = useSelector(
     (state: RootState) => state.hotel.categoryFilter
   );
 
@@ -45,7 +41,7 @@ export default function Hotels() {
 
   return (
     <div className='my-12 w-full rounded pt-8 gap-x-8 gap-y-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
-      {filteredHotels.map((hotel: Hotel) => (
+      {filteredHotels && filteredHotels.map((hotel: Hotel) => (
         <div
           key={hotel.id}
           className='flex flex-col justify-between bg-background min-h-[20rem] rounded-2xl shadow-md'

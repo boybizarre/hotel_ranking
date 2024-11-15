@@ -19,7 +19,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Category } from '@/lib/data/categories'; // Your categories data
 
 // redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
 interface Props {
@@ -27,7 +27,7 @@ interface Props {
 }
 
 export default function ShowCategoriesDialog({ trigger }: Props) {
-  const categories = useSelector((state: RootState) => state.hotel.categories);
+  const categories: Category[] = useSelector((state: RootState) => state.hotel.categories);
 
   const [open, setOpen] = useState(false);
 
@@ -43,7 +43,7 @@ export default function ShowCategoriesDialog({ trigger }: Props) {
         </DialogHeader>
 
         <div className='mt-4'>
-          {categories.map((category: Category) => (
+          {categories && categories.map((category) => (
             <div
               key={category.value}
               className='flex justify-between items-center mb-4'

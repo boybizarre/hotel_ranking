@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
 
 // components
 import {
@@ -21,7 +20,6 @@ import {
   FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -64,8 +62,6 @@ export default function AddHotelDialog({ trigger, hotel }: Props) {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const router = useRouter();
-
   const form = useForm<CreateHotelSchemaType>({
     resolver: zodResolver(CreateHotelSchema),
     defaultValues: {
@@ -107,15 +103,18 @@ export default function AddHotelDialog({ trigger, hotel }: Props) {
             description: `Hotel ${hotel ? 'updated' : 'created'} successfully`,
           });
           setIsLoading(false);
+        setOpen(false);
         }, 2000);
 
         form.reset();
     } catch (err) {
+      console.error(err);
       toast({
         title: 'Error',
         description: 'Something went wrong',
         variant: 'destructive',
       });
+      setOpen(false);
     }
   }
 
@@ -211,7 +210,7 @@ export default function AddHotelDialog({ trigger, hotel }: Props) {
                 <FormItem>
                   <FormLabel className='text-2xl'>Category</FormLabel>
                   <FormControl>
-                    <FilterComboBox onChange={handleCategoryChange} />
+                    <FilterComboBox value={hotel?.category} onChange={handleCategoryChange} />
                   </FormControl>
                   <FormDescription className='text-xl'>
                     Select a category for this hotel

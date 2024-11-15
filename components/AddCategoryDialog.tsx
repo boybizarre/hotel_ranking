@@ -13,19 +13,12 @@ import {
 } from '@/components/ui/dialog';
 
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-
-import {
   Form,
   FormField,
   FormItem,
   FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -93,6 +86,7 @@ export default function AddCategoryDialog({ trigger, category }: Props) {
           } successfully`,
         });
         setIsLoading(false);
+        setOpen(false);
       }, 2000);
 
       form.reset();
@@ -102,6 +96,7 @@ export default function AddCategoryDialog({ trigger, category }: Props) {
         description: 'Something went wrong',
         variant: 'destructive',
       });
+      setOpen(false);
     }
   }
 

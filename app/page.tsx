@@ -9,10 +9,6 @@ import AddCategoryDialog from '@/components/AddCategoryDialog';
 
 export default function Home() {
 
-  function handleCategoryChange (){
-    return;
-  }
-
   return (
     <>
       <div className='grid grid-cols-1 gap-6 h-24 px-12 py-6 bg-background rounded-3xl md:grid-cols-3'>

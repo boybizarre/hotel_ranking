@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/alert-dialog';
 
 // redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteCategory } from '@/redux/HotelReducer';
 
 interface Props {
@@ -26,24 +26,23 @@ interface Props {
   trigger: ReactNode;
 }
 
-export default function DeleteDialog({
-  category,
-  trigger,
-}:
-Props) {
-
+export default function DeleteDialog({ category, trigger }: Props) {
   const dispatch = useDispatch();
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle className='text-3xl font-bold'>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription className='text-xl text-muted-foreground'>
-            This action cannot be undone. This will permanently delete <span className='font-bold text-foreground'>{category.label}</span> category
-            </AlertDialogDescription>
-          </AlertDialogHeader>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle className='text-3xl font-bold'>
+            Are you absolutely sure?
+          </AlertDialogTitle>
+          <AlertDialogDescription className='text-xl text-muted-foreground'>
+            This action cannot be undone. This will permanently delete{' '}
+            <span className='font-bold text-foreground'>{category.label}</span>{' '}
+            category
+          </AlertDialogDescription>
+        </AlertDialogHeader>
 
         <AlertDialogFooter className='mt-12'>
           <AlertDialogCancel className='text-xl'>Cancel</AlertDialogCancel>
@@ -56,14 +55,13 @@ Props) {
                   title: 'Deleted',
                   description: `Deleted ${category.label}`,
                 });
-              },2000)
+              }, 2000);
             }}
           >
             Continue
           </AlertDialogAction>
-          
-          </AlertDialogFooter>
-        </AlertDialogContent>
+        </AlertDialogFooter>
+      </AlertDialogContent>
     </AlertDialog>
   );
 }
