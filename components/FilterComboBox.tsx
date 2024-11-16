@@ -109,7 +109,7 @@ function OptionsList({
 }) {
   return (
     <Command>
-      <CommandInput className='text-lg' placeholder='Filter currency...' />
+      <CommandInput className='text-lg' placeholder='Filter category...' />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
