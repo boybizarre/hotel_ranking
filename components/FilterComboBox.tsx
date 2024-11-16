@@ -70,7 +70,7 @@ export default function FilterComboBox({ onChange, value }: Props) {
             {selectedOption ? (
               <>{selectedOption.label}</>
             ) : (
-              <>Filter by category</>
+              <>Filter category</>
             )}
           </Button>
         </PopoverTrigger>
